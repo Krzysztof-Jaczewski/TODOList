@@ -1,0 +1,11 @@
+html {
+    box-sizing: border-box;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+:root{
+    --main-color: hsl(231, 100%, 50%);
+}
