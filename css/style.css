@@ -4,8 +4,25 @@ html {
 
 *, ::after, ::before {
     box-sizing: inherit;
+    margin: 0;
 }
 
-:root{
-    --main-color: hsl(231, 100%, 50%);
+.body{
+    display: grid;
+    grid-template: 1fr 1fr;
+    gap: 2px ;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    background-color:grey;
 }
+
+.header{
+    font-size: 40px;
+    margin-top: 50px;
+}
+.subHeader{
+    padding: 20px;
+    background-color: white;
+}
+

@@ -7,20 +7,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" />
     <link rel="icon" href="images/icon2.png">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/taskList.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script defer src="js/script.js"></script>   
     <title>TODOList</title>
 </head>
-<body>
-    <header><h1><span>TODO</span>List</h1></header>
-    <form class="js-form">
-        <input class="js-newTask" type="text">
-        <button class="js-button" >dodaj pozycje</button>
+<body class="body">
+    <header><h1 class="header">Lista Zadań</h1></header>
+    <h2 class="subHeader">Dodaj nowe zadanie</h2>
+    <form class="form js-form">
+        <input class="form__text js-newTask" type="text">
+        <button class="form__button js-button">Dodaj zadanie</button>
     </form>
-
-    <ul class="js-tasks">
-
-    </ul>
+    <h2 class="subHeader">Lista zadań</h2>
+    <label class="taskList ">
+    </label>
 </body>
 </html>
