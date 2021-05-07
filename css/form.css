@@ -1,0 +1,7 @@
+.form__item{
+    padding: 10px;
+}
+
+.form__item--line{
+    text-decoration: line-through;
+}
