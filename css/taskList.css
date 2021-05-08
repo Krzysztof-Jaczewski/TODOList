@@ -1,4 +1,21 @@
 .taskList{
+    display: grid;
+    grid-gap:2px;
+}
+
+.taskList__header{
+    padding: 10px;
     background-color: white;
-    padding: 30px 20px;
+}
+
+.taskList__list{
+    padding: 10px;
+    background-color: white;
+}
+.form__item{
+    padding: 10px;
+}
+
+.form__item--line{
+    text-decoration: line-through;
 }

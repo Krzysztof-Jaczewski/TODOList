@@ -1,26 +1,41 @@
-.form{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px 10px;
-    background-color: white;
+.form {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    align-content: center;
+    align-items: center;
+    gap: 2px;
     margin-bottom: 5px;
+    grid-template-areas: "hd " "pg";
 }
 
-.form__text{
-flex-basis: 80%;
-padding: 5px;
+.form__header {
+    font-size: 20px;
+    padding: 23px 10px;
+    background-color: white;
+    grid-area: hd;
 }
 
-.form__button{
-background-color: teal;
-color: white;
-padding: 8px;
+.form__paragraph {
+    grid-area: pg;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 5px;
+    background-color: white;
 }
 
-.form__item{
-    padding: 10px;
+.form__text {
+    margin: 10px;
+    padding: 8px;
+    background-color: white;
+    flex-grow: 1;
+    border-radius: 4px;
 }
 
-.form__item--line{
-    text-decoration: line-through;
+.form__button {
+    background-color: teal;
+    color: white;
+    padding: 8px;
+    margin:10px; 
+    border-radius: 4px;
 }
