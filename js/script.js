@@ -1,15 +1,8 @@
 {
     const tasks = [
-        {
-            content: "nagrać lekcję",
-            done: false,
-        },
-        {
-            content: "zjeść pizzę",
-            done: true,
-        },
+        
     ];
-    
+
     const addNewTask = (newTaskContent) => {
         tasks.push({
             content: newTaskContent,
@@ -17,40 +10,40 @@
         render();
     }
 
-    const removeTask = (index) =>{
-        tasks.splice(index,1);
-                render();
+    const removeTask = (index) => {
+        tasks.splice(index, 1);
+        render();
     }
-    const toggleTaskDone = (taskIndex)=>{
+    const toggleTaskDone = (taskIndex) => {
         tasks[taskIndex].done = !tasks[taskIndex].done;
-         render();
+        render();
     }
-    const bindEvents = () =>{
-    const removeButtons = document.querySelectorAll(".js-remove");
+    const bindEvents = () => {
+        const removeButtons = document.querySelectorAll(".js-remove");
 
-        removeButtons.forEach((removeButton,index) => {
+        removeButtons.forEach((removeButton, index) => {
             removeButton.addEventListener("click", () => {
                 removeTask(index);
             });
         });
-        
+
         const toggleDoneButtons = document.querySelectorAll(".js-done");
 
-        toggleDoneButtons.forEach((toggleDoneButton,taskIndex) => {
+        toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
             toggleDoneButton.addEventListener("click", () => {
                 toggleTaskDone(taskIndex);
             });
-        });}
+        });
+    }
     const render = () => {
         let htmlString = "";
 
         for (const task of tasks) {
             htmlString += `
-            <li ${task.done ? "class=\"form__item form__item--line\"" : "class=\"form__item \""}>
-            ${task.content}
-            <button class="js-done">zrobione?</button>
-            <button class="js-remove">usuń</button>
-            </li>
+            <li class="taskList__item"><span class="taskList__span js-done ">${task.done ? "&#10004;" : ""}</span>
+            <span ${task.done ? "class=\"taskList__text taskList__text--done\"" : "class=\"taskList__text \""}>${task.content}</span>
+            <span class="taskList__span taskList__span--remove js-remove">&#128465;</span>
+        </li>
             `;
         }
         document.querySelector(".js-tasks").innerHTML = htmlString;
