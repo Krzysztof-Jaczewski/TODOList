@@ -1,21 +1,48 @@
-.taskList{
+.taskList {
     display: grid;
-    grid-gap:2px;
+    grid-template-rows: 50px 1fr;
+    grid-gap: 2px;
 }
 
-.taskList__header{
-    padding: 10px;
+.taskList__header {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    padding: 15px;
     background-color: white;
 }
 
-.taskList__list{
-    padding: 10px;
+.taskList__list {
+    padding: 15px;
     background-color: white;
-}
-.form__item{
-    padding: 10px;
+    list-style: none;
 }
 
-.form__item--line{
+.taskList__item {
+    display: grid;
+    grid-template-columns: 27px 1fr 27px;
+    grid-auto-rows: auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.taskList__item--line {
     text-decoration: line-through;
+}
+
+.taskList__span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 27px;
+    height: 27px;
+    background-color: green;
+    cursor: pointer;
+    color: white;
+}
+
+.taskList__span--remove {
+    background-color: red;
 }
