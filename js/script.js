@@ -51,7 +51,7 @@
         bindEvents();
     };
 
-    const textReset = ()=>{
+    const textResetAndFocus = ()=>{
         const newTask=document.querySelector(".js-newTask");
         newTask.value="";
         newTask.focus();
@@ -61,11 +61,11 @@
         event.preventDefault();
       
         const newTaskContent = document.querySelector(".js-newTask").value.trim();
-        
+
         if (newTaskContent === "") return;
 
         addNewTask(newTaskContent);
-        textReset();
+        textResetAndFocus();
     }
 
     const init = () => {
