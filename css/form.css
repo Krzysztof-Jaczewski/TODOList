@@ -3,7 +3,7 @@
     grid-template-rows: 50px 1fr;
     gap: 2px;
     margin-bottom: 8px;
-    grid-template-areas: "hd" "pg";
+
 }
 
 .form__header {
@@ -12,16 +12,19 @@
     font-size: 18px;
     padding: 10px 15px;
     background-color: white;
-    grid-area: hd;
 }
 
+
 .form__paragraph {
-    grid-area: pg;
     display: grid;
     grid-template-columns: 1fr 150px;
     background-color: white;
 }
-
+@media (max-width: 490px){
+    .form__paragraph{
+        grid-template-columns: 1fr;
+    }
+}
 .form__text {
     margin: 15px;
     padding: 8px;
@@ -37,4 +40,9 @@
     margin: 15px 15px 15px 0;
     border-radius: 2px;
     cursor: pointer;
+}
+@media (max-width: 490px){
+    .form__button{
+        margin: 0 15px 15px 15px
+    }
 }
