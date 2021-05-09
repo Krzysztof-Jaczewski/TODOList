@@ -30,6 +30,7 @@
 
 .taskList__text{
 word-break: break-all; 
+font-size: 14px;
 }
 .taskList__text--done {
     text-decoration: line-through;
