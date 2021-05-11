@@ -12,10 +12,12 @@
         tasks.splice(index, 1);
         render();
     }
+
     const toggleTaskDone = (taskIndex) => {
         tasks[taskIndex].done = !tasks[taskIndex].done;
         render();
     }
+
     const bindEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
 
@@ -40,7 +42,7 @@
             htmlString += `
         <li class="taskList__item">
             <button class="taskList__button js-done ">${task.done ? "&#10004;" : ""}</button>
-            <span class="taskList__span ${task.done ?"taskList__text--done" : ""}">${task.content}</span>
+            <span class="taskList__span ${task.done ? "taskList__text--done" : ""}">${task.content}</span>
             <button class="taskList__button taskList__button--remove js-remove">&#128465;</button>
         </li>
             `;
@@ -51,19 +53,20 @@
         bindEvents();
     };
 
-    const textResetAndFocus = (newTask)=>{
-        newTask.value="";
+    const textResetAndFocus = (newTask) => {
+        newTask.value = "";
         newTask.focus();
     }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-      
-        const newTaskContent = document.querySelector(".js-newTask");
-        if (newTaskContent.value.trim() === "") return textResetAndFocus(newTaskContent);;
 
-        addNewTask(newTaskContent.value.trim());
-        textResetAndFocus(newTaskContent);
+        const newTask = document.querySelector(".js-newTask");
+        
+        if (newTask.value.trim() === "") return textResetAndFocus(newTask);;
+
+        addNewTask(newTask.value.trim());
+        textResetAndFocus(newTask);
     }
 
     const init = () => {

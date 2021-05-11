@@ -2,7 +2,7 @@
     display: grid;
     grid-template-rows: 60px min(500px,1fr);
     grid-gap: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .section__header{
