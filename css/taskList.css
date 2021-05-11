@@ -32,6 +32,7 @@ word-break: break-all;
     cursor: pointer;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 .taskList__button--remove {
