@@ -31,6 +31,9 @@ word-break: break-all;
     border: none;
     cursor: pointer;
 }
+.taskList__button:active{
+    outline:2px solid black; 
+}
 
 .taskList__button--remove {
     background-color: rgb(210, 5, 15);

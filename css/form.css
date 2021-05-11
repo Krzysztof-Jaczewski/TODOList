@@ -24,3 +24,6 @@
     cursor: pointer;
     border: none;
 }
+.form__button:active{
+    outline:2px solid black;
+}
