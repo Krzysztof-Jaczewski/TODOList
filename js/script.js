@@ -58,14 +58,32 @@
         newTask.focus();
     }
 
+    const sanitizationOfUserText = (text) => {
+        let htmlText = "";
+
+        text = text.split("");
+        for (let i = 0; i < text.length; i++) {
+            console.log(text[i])
+            if (text[i] === "<") htmlText += "&lt";
+            else if (text[i] === ">") htmlText += "&gt";
+            else {
+                htmlText += text[i];
+            }
+        }
+        console.log(htmlText)
+        return htmlText;
+    }
+
+
     const onFormSubmit = (event) => {
         event.preventDefault();
 
         const newTask = document.querySelector(".js-newTask");
-        
+
         if (newTask.value.trim() === "") return textResetAndFocus(newTask);;
 
-        addNewTask(newTask.value.trim());
+        newTask.value = sanitizationOfUserText(newTask.value.trim());
+        addNewTask(newTask.value);
         textResetAndFocus(newTask);
     }
 
