@@ -51,8 +51,7 @@
         bindEvents();
     };
 
-    const textResetAndFocus = ()=>{
-        const newTask=document.querySelector(".js-newTask");
+    const textResetAndFocus = (newTask)=>{
         newTask.value="";
         newTask.focus();
     }
@@ -60,12 +59,11 @@
     const onFormSubmit = (event) => {
         event.preventDefault();
       
-        const newTaskContent = document.querySelector(".js-newTask").value.trim();
+        const newTaskContent = document.querySelector(".js-newTask");
+        if (newTaskContent.value.trim() === "") return textResetAndFocus(newTaskContent);;
 
-        if (newTaskContent === "") return;
-
-        addNewTask(newTaskContent);
-        textResetAndFocus();
+        addNewTask(newTaskContent.value.trim());
+        textResetAndFocus(newTaskContent);
     }
 
     const init = () => {
