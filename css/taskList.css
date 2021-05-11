@@ -23,9 +23,6 @@ word-break: break-all;
 }
 
 .taskList__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 30px;
     height: 30px;
     background-color: green;
