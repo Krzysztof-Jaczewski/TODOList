@@ -1,34 +1,17 @@
+
 .form {
-    display: grid;
-    grid-template-rows: 55px 1fr;
-    gap: 2px;
-    margin-bottom: 8px;
-
-}
-
-.form__header {
-    display: flex;
-    align-items: center;
-    font-size: 19px;
-    padding: 10px 15px;
-    background-color: white;
-}
-
-
-.form__paragraph {
     display: grid;
     grid-template-columns: 1fr 138px;
     background-color: white;
 }
 @media (max-width: 490px){
-    .form__paragraph{
+    .form{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 47px;
     }
 }
 .form__text {
     margin: 18px;
-    font-size: 14px;
     padding: 8px;
     background-color: white;
     border: 1px solid rgb(220, 220, 220);
