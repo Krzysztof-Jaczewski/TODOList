@@ -15,14 +15,14 @@
     border-bottom: 1px solid rgb(218, 218, 218);
 }
 
-.taskList__text{
+.taskList__span{
 word-break: break-all; 
 }
-.taskList__text--done {
+.taskList__span--done {
     text-decoration: line-through;
 }
 
-.taskList__span {
+.taskList__button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,8 +31,9 @@ word-break: break-all;
     background-color: green;
     cursor: pointer;
     color: white;
+    border: none;
 }
 
-.taskList__span--remove {
+.taskList__button--remove {
     background-color: rgb(210, 5, 15);
 }
