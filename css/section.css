@@ -1,10 +1,16 @@
 .section{
     display: grid;
-    grid-template-rows: 60px minmax(60px,1fr);
-    grid-gap: 2px;
+    grid-template-rows: 60px minmax(50px,1fr);
+    grid-gap: 5px;
+    box-shadow: 0 0 5px #ddd;
 }
 
 .section__header{
     padding: 15px 20px;
+    background-color: white;
+}
+
+.section__body{
+    padding:20px;
     background-color: white;
 }

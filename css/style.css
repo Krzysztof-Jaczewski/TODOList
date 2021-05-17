@@ -7,12 +7,15 @@ html {
     margin: 0;
 }
 
+button{
+    cursor: pointer;
+}
 .body {
-    max-width: 787px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 15px;
-    font-family: 'Open Sans', sans-serif;
-    background-color: rgb(240, 240, 240);
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eee;
 }
 
 .body__header {
