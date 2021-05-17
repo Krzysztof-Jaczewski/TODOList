@@ -1,10 +1,19 @@
 .section{
     display: grid;
-    grid-template-rows: 60px minmax(50px,1fr);
+    grid-template-rows: auto minmax(50px,1fr);
     grid-gap: 5px;
     box-shadow: 0 0 5px #ddd;
 }
+.section__layout{
+    display: grid;
+    grid-template-columns:1fr auto auto;
+}
 
+@media (max-width: 630px) {
+    .section__layout {
+        grid-template-columns: 1fr;
+    }
+}
 .section__header{
     padding: 15px 20px;
     background-color: white;
@@ -13,4 +22,16 @@
 .section__body{
     padding:20px;
     background-color: white;
+}
+.section__button{
+    border: none;
+    background-color: white;
+    padding: 20px;
+    color: hsl(180, 100%, 25%);
+}
+.section__button:hover{
+color: hsl(180, 100%, 30%);
+}
+.section__button:active{
+    color: hsl(180, 100%, 35%);
 }
