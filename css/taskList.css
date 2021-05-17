@@ -28,6 +28,7 @@ word-break: break-all;
     cursor: pointer;
     color: white;
     border: none;
+    transition: 1s;
 }
 
 .taskList__button:hover{
