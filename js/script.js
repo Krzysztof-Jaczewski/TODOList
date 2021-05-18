@@ -2,14 +2,15 @@
     let tasks = [];
     let hideDoneTask = false;
 
-    const toggleHideDoneTask = ()=>{
-    hideDoneTask=!hideDoneTask;
+    const toggleHideDoneTask = () => {
+        hideDoneTask = !hideDoneTask;
+        render();
     };
 
     const addNewTask = (newTaskContent) => {
-        tasks=[
+        tasks = [
             ...tasks,
-           { content: newTaskContent},
+            { content: newTaskContent },
         ]
         render();
     }
@@ -67,6 +68,21 @@
     }
 
     const renderButtons = () => {
+        let sectionButtons = "";
+        
+        for (const task of tasks) {
+            sectionButtons =
+                `<button class="section__button section__button--hide">
+            Ukryj ukończone
+            </button>
+    
+            <button class="section__button section__button--hide section__button--disabled" >
+            Ukończ wszystkie
+            </button>
+            `;
+
+        }
+        document.querySelector(".js-sectionButton").innerHTML = sectionButtons;
 
     };
 
@@ -75,7 +91,7 @@
     };
     const render = () => {
         renderTasks();
-        // renderButtons();
+        renderButtons();
 
 
         bindRemoveEvents();
