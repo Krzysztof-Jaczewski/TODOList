@@ -144,7 +144,6 @@ const sanitizationOfUserText = (text) => {
     text = text.split("");
     for (let i = 0; i < text.length; i++) {
         if (text[i] === "<") htmlText += "&lt";
-        else if (text[i] === ">") htmlText += "&gt";
         else {
             htmlText += text[i];
         }
