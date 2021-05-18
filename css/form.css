@@ -4,7 +4,7 @@
     grid-gap: 20px;
 }
 
-@media (max-width: 630px) {
+@media (max-width: 767px) {
     .form {
         grid-template-columns: 1fr;
     }
@@ -21,12 +21,12 @@
     color: rgb(230, 230, 230);
     padding: 10px;
     border: none;
-    transition: 1s;
+    transition: background 0.5s linear, transform 0.5s linear;
 }
 
 .form__button:hover {
     background-color: hsl(180, 100%, 30%);
-    transform: scale(1.1) ;
+    transform: scale(1.1);
 }
 
 .form__button:active {
