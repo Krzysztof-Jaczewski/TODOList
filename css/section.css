@@ -52,9 +52,11 @@
    visibility: hidden;
 } */
 
-/* .section__button--disabled {
-    color: gray;
-} */
+
+.section__button--disabled{
+    color:#ddd;
+    pointer-events: none;
+}
 
 .section__button:hover {
     color: hsl(180, 100%, 30%);
