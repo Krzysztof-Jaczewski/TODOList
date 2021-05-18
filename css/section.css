@@ -48,11 +48,6 @@
     transition: background 0.5s linear;
 }
 
-/* .section__button--hide {
-   visibility: hidden;
-} */
-
-
 .section__button--disabled{
     color:#ddd;
     pointer-events: none;

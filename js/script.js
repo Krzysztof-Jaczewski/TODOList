@@ -1,5 +1,5 @@
 
-let tasks = [{content: "asda", done:false}];
+let tasks = [];
 let hideDoneTask = false;
 let allTasksDone = false;
 
