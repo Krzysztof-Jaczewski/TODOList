@@ -1,11 +1,7 @@
-{
+
     let tasks = [];
     let hideDoneTask = false;
-
-    const toggleHideDoneTask = () => {
-        hideDoneTask = !hideDoneTask;
-        render();
-    };
+    let allTasksDone = false;
 
     const addNewTask = (newTaskContent) => {
         tasks = [
@@ -16,15 +12,30 @@
     }
 
     const removeTask = (index) => {
-        tasks.splice(index, 1);
+        tasks = [
+            ...tasks.slice(0, index),
+            ...tasks.slice(index+1),
+        ];
         render();
     }
 
     const toggleTaskDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done;
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            {...tasks[taskIndex], done:true},
+            ...tasks.slice(taskIndex+1),
+        ];
+        
         render();
     }
+    const toggleHideDoneTask = () => {
+        hideDoneTask = !hideDoneTask;
+        render();
+    };
 
+    const finishAllTasks = ()=> {
+        render();
+    };
     const bindRemoveEvents = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
 
@@ -44,13 +55,25 @@
             });
         });
     }
+    const bindButtonsEvents = () => {
+        const buttonHideDoneTasks = document.querySelector(".js-buttonHideDoneTasks");
+        const buttonFinishAllTasks = document.querySelector(".js-buttonFinishAllTasks");
+
+        // buttonHideDoneTasks.addEventListener("click", () => {
+        //     toggleHideDoneTask();
+        // });
+
+        // buttonFinishAllTasks.addEventListener("click", () => {
+        //     finishAllTasks();
+        // });
+    }
 
     const renderTasks = () => {
         let htmlString = "";
 
         for (const task of tasks) {
             htmlString += `
-        <li class="taskList__item">
+        <li class="taskList__item ${hideDoneTask ? "taskList__item--hide":""}">
             <button class="taskList__button js-done ">
             ${task.done ? "&#10004;" : ""}
             </button>
@@ -69,34 +92,28 @@
 
     const renderButtons = () => {
         let sectionButtons = "";
-        
-        for (const task of tasks) {
+         if(tasks.length>0){
             sectionButtons =
-                `<button class="section__button section__button--hide">
+                `<button class="section__button section__button--hide js-buttonHideDoneTasks">
             Ukryj ukończone
             </button>
-    
-            <button class="section__button section__button--hide section__button--disabled" >
+            
+            <button class="section__button section__button--hide
+            ${allTasksDone ? "section__button--disabled" : ""} js-buttonFinishAllTasks" >
             Ukończ wszystkie
             </button>
             `;
-
         }
         document.querySelector(".js-sectionButton").innerHTML = sectionButtons;
-
     };
 
-    const bindButtons = () => {
-
-    };
     const render = () => {
-        renderTasks();
         renderButtons();
+        renderTasks();
 
-
-        bindRemoveEvents();
         bindToggleDoneEvents();
-        // bindButtonsEvents();
+        bindRemoveEvents();
+        bindButtonsEvents();
     };
 
     const textResetAndFocus = (newTask) => {
@@ -109,14 +126,12 @@
 
         text = text.split("");
         for (let i = 0; i < text.length; i++) {
-            console.log(text[i])
             if (text[i] === "<") htmlText += "&lt";
             else if (text[i] === ">") htmlText += "&gt";
             else {
                 htmlText += text[i];
             }
         }
-        console.log(htmlText)
         return htmlText;
     }
 
@@ -143,4 +158,3 @@
     };
 
     init();
-}
