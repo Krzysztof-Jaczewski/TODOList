@@ -1,5 +1,5 @@
 
-let tasks = [];
+let tasks = [{content: "asda", done:false}];
 let hideDoneTask = false;
 let allTasksDone = false;
 
@@ -72,14 +72,18 @@ const bindToggleDoneEvents = () => {
     });
 }
 
-const bindButtonsEvents = () => {
-    if (tasks.length > 0) {
-        const buttonHideDoneTasks = document.querySelector(".js-buttonHideDoneTasks");
-        const buttonFinishAllTasks = document.querySelector(".js-buttonFinishAllTasks");
+const bindHideTasksEvents = () =>{
+    if (tasks.length > 0){
+    const buttonHideDoneTasks = document.querySelector(".js-buttonHideDoneTasks");
 
-        buttonHideDoneTasks.addEventListener("click", () => {
-            toggleHideDoneTask();
-        });
+    buttonHideDoneTasks.addEventListener("click", () => {
+        toggleHideDoneTask();
+    });
+}
+}
+const bindFinishTasksEvents = () => {
+    if (tasks.length > 0) {
+        const buttonFinishAllTasks = document.querySelector(".js-buttonFinishAllTasks");
 
         buttonFinishAllTasks.addEventListener("click", () => {
             finishAllTasks();
@@ -87,25 +91,23 @@ const bindButtonsEvents = () => {
     }
 }
 const renderTasks = () => {
-    let htmlString = "";
-
-    for (const task of tasks) {
-        htmlString += `
-        <li class="taskList__item ${task.done && hideDoneTask ? "taskList__item--hide" : ""}">
+      const tasksTransformtoHTML = tasks
+      .map(task =>
+          `<li class="taskList__item ${task.done && hideDoneTask ? "taskList__item--hide" : ""}">
             <button class="taskList__button js-done ">
-            ${task.done ? "&#10004;" : ""}
-            </button>
-            <span class="taskList__span ${task.done ? "taskList__span--done" : ""}">
-            ${task.content}
+             ${task.done ? "&#10004;" : ""}
+             </button>
+             <span class="taskList__span ${task.done ? "taskList__span--done" : ""}">
+             ${task.content}
             </span>
             <button class="taskList__button taskList__button--remove js-remove">
             &#128465;
             </button>
-        </li>
-            `;
-
-        document.querySelector(".js-tasks").innerHTML = htmlString;
-    }
+          </li>`)
+      .join("")
+        
+        
+    document.querySelector(".js-tasks").innerHTML = tasksTransformtoHTML;
 }
 
 const renderButtons = () => {
@@ -130,7 +132,8 @@ const render = () => {
 
     bindToggleDoneEvents();
     bindRemoveEvents();
-    bindButtonsEvents();
+    bindHideTasksEvents();
+    bindFinishTasksEvents();
 };
 
 const textResetAndFocus = (newTask) => {
