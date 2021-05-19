@@ -61,13 +61,10 @@ const bindToggleDoneEvents = () => {
     toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
         toggleDoneButton.addEventListener("click", () => {
             toggleTaskDone(taskIndex);
-            if(tasks.filter(({done})=>done).length ===tasks.length ){
-                allTasksDone = true;
-                render();
-            }else{
-                allTasksDone = false;
-                render();
-            }
+           
+            allTasksDone =(tasks.filter(({done})=>done).length === tasks.length ) ? true : false;
+            
+            render();
         });
     });
 }
@@ -157,7 +154,7 @@ const sanitizationOfUserText = (text) => {
 
 const onFormSubmit = (event) => {
     event.preventDefault();
-    allTasksDone=false;
+
     const newTask = document.querySelector(".js-newTask");
     newTask.value = sanitizationOfUserText(newTask.value.trim());
 
@@ -165,6 +162,8 @@ const onFormSubmit = (event) => {
 
     addNewTask(newTask.value);
     textResetAndFocus(newTask);
+
+    allTasksDone=false;
     render();
 }
 
