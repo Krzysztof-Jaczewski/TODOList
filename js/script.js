@@ -138,19 +138,7 @@
         newTask.focus();
     }
 
-    const sanitizationOfUserText = (text) => {
-        let htmlText = "";
-
-        text = text.split("");
-        for (let i = 0; i < text.length; i++) {
-            if (text[i] === "<") htmlText += "&lt";
-            else {
-                htmlText += text[i];
-            }
-        }
-        return htmlText;
-    }
-
+    const sanitizationOfUserText = (text) => text.replace(/</g,'&lt;');
 
     const onFormSubmit = (event) => {
         event.preventDefault();
