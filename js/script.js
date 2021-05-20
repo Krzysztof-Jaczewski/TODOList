@@ -35,13 +35,13 @@
 
     const finishAllTasks = () => {
         allTasksDone = true;
-        for (let i = 0; i < tasks.length; i++) {
+        tasks.forEach((task, index) => {
             tasks = [
-                ...tasks.slice(0, i),
-                { ...tasks[i], done: true },
-                ...tasks.slice(i + 1),
-            ];
-        };
+                ...tasks.slice(0, index),
+                { ...task, done: true },
+                ...tasks.slice(index + 1),
+            ]});
+      
         render();
     };
 
