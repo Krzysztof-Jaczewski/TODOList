@@ -61,8 +61,8 @@
         toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
             toggleDoneButton.addEventListener("click", () => {
                 toggleTaskDone(taskIndex);
-
-                allTasksDone = (tasks.filter(({ done }) => done).length === tasks.length) ? true : false;
+                
+                allTasksDone = (tasks.some(({ done }) => !done)) ? false : true;
 
                 render();
             });
