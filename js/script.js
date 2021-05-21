@@ -1,7 +1,6 @@
 {
     let tasks = [];
     let hideDoneTask = false;
-    let allTasksDone = false;
 
     const addNewTask = (newTaskContent) => {
         tasks = [
@@ -34,7 +33,6 @@
     };
 
     const finishAllTasks = () => {
-        allTasksDone = true;
         tasks.forEach((task, index) => {
             tasks = [
                 ...tasks.slice(0, index),
@@ -61,10 +59,6 @@
         toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
             toggleDoneButton.addEventListener("click", () => {
                 toggleTaskDone(taskIndex);
-                
-                allTasksDone = (tasks.every(({ done }) => done)) ? true : false;
-
-                render();
             });
         });
     }
@@ -114,8 +108,8 @@
                 `<button class="section__button js-buttonHideDoneTasks">
             ${hideDoneTask ? "Pokaż ukończone" : "Ukryj ukończone"}
             </button>
-            <button class="section__button js-buttonFinishAllTasks
-            ${allTasksDone ? "section__button--disabled" : ""} ">
+            <button class="section__button js-buttonFinishAllTasks"
+            ${ tasks.every( task => task.done) ? "disabled" : ""}>
             Ukończ wszystkie
             </button>
             `;
@@ -151,7 +145,6 @@
         addNewTask(newTask.value);
         textResetAndFocus(newTask);
 
-        allTasksDone = false;
         render();
     }
 
