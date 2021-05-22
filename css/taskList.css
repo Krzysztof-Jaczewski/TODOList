@@ -18,7 +18,7 @@
 }
 
 .taskList__span {
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .taskList__span--done {
