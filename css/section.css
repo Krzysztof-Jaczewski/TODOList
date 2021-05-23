@@ -30,7 +30,7 @@
 
 .section__layoutButtons{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     grid-gap: 20px;
 }
 
@@ -45,7 +45,7 @@
     border: none;
     background-color: white;
     color: hsl(180, 100%, 25%);
-    transition: background 0.5s linear;
+    transition: color 0.5s linear;
 }
 
 .section__button:disabled{

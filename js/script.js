@@ -6,9 +6,9 @@
         tasks = [
             ...tasks,
             { content: newTaskContent },
-        ]
+        ];
         render();
-    }
+    };
 
     const removeTask = (index) => {
         tasks = [
@@ -16,16 +16,21 @@
             ...tasks.slice(index + 1),
         ];
         render();
-    }
+    };
 
     const toggleTaskDone = (taskIndex) => {
+        const task = tasks[taskIndex];
+
         tasks = [
             ...tasks.slice(0, taskIndex),
-            { ...tasks[taskIndex], done: !tasks[taskIndex].done },
+            {
+                ...task,
+                done: !task.done
+            },
             ...tasks.slice(taskIndex + 1),
         ];
         render();
-    }
+    };
 
     const toggleHideDoneTask = () => {
         hideDoneTask = !hideDoneTask;
@@ -33,17 +38,15 @@
     };
 
     const finishAllTasks = () => {
-        tasks.forEach((task, index) => {
-            tasks = [
-                ...tasks.slice(0, index),
-                { ...task, done: true },
-                ...tasks.slice(index + 1),
-            ]});
-      
+        tasks = tasks.map(task => ({
+            ...task,
+            done: true,
+        }))
         render();
+
     };
 
-    const bindRemoveEvents = () => {
+    const bindRemoveEvent = () => {
         const removeButtons = document.querySelectorAll(".js-remove");
 
         removeButtons.forEach((removeButton, index) => {
@@ -51,9 +54,9 @@
                 removeTask(index);
             });
         });
-    }
+    };
 
-    const bindToggleDoneEvents = () => {
+    const bindToggleDoneEvent = () => {
         const toggleDoneButtons = document.querySelectorAll(".js-done");
 
         toggleDoneButtons.forEach((toggleDoneButton, taskIndex) => {
@@ -61,59 +64,60 @@
                 toggleTaskDone(taskIndex);
             });
         });
-    }
+    };
 
-    const bindHideTasksEvents = () => {
-        if (tasks.length > 0) {
-            const buttonHideDoneTasks = document.querySelector(".js-buttonHideDoneTasks");
+    const bindHideTasksEvent = () => {
+        const buttonHideDoneTasks = document.querySelector(".js-buttonHideDoneTasks");
+       
+        if (!buttonHideDoneTasks) return;
 
-            buttonHideDoneTasks.addEventListener("click", () => {
-                toggleHideDoneTask();
-            });
-        }
-    }
-    const bindFinishTasksEvents = () => {
-        if (tasks.length > 0) {
-            const buttonFinishAllTasks = document.querySelector(".js-buttonFinishAllTasks");
+        buttonHideDoneTasks.addEventListener("click", () => {
+            toggleHideDoneTask();
+        });
+    };
 
-            buttonFinishAllTasks.addEventListener("click", () => {
-                finishAllTasks();
-            });
-        }
-    }
+    const bindFinishTasksEvent = () => {
+        const buttonFinishAllTasks = document.querySelector(".js-buttonFinishAllTasks");
+      
+        if (!buttonFinishAllTasks) return;
+
+        buttonFinishAllTasks.addEventListener("click", () => {
+            finishAllTasks();
+        });
+    };
+
     const renderTasks = () => {
-        const tasksTransformtoHTML = tasks
-            .map(task =>
-                `<li class="taskList__item ${task.done && hideDoneTask ? "taskList__item--hide" : ""}">
-            <button class="taskList__button js-done ">
-             ${task.done ? "&#10004;" : ""}
-             </button>
-             <span class="taskList__span ${task.done ? "taskList__span--done" : ""}">
-             ${task.content}
-            </span>
-            <button class="taskList__button taskList__button--remove js-remove">
-            &#128465;
-            </button>
-          </li>`)
-            .join("")
+        const tasksTransformToHTML = tasks
+            .map(task => `
+             <li class="taskList__item${task.done && hideDoneTask ? " taskList__item--hide" : ""}">
+               <button class="taskList__button js-done ">
+                  ${task.done ? "&#10004;" : ""}
+               </button>
+               <span class="taskList__span${task.done ? " taskList__span--done" : ""}">
+                  ${task.content}
+               </span>
+               <button class="taskList__button taskList__button--remove js-remove">
+                  &#128465;
+               </button>
+             </li>
+            `)
+            .join("");
 
-
-        document.querySelector(".js-tasks").innerHTML = tasksTransformtoHTML;
-    }
+        document.querySelector(".js-tasks").innerHTML = tasksTransformToHTML;
+    };
 
     const renderButtons = () => {
         let sectionButtons = "";
         if (tasks.length > 0) {
-            sectionButtons =
-                `<button class="section__button js-buttonHideDoneTasks">
-            ${hideDoneTask ? "Pokaż ukończone" : "Ukryj ukończone"}
-            </button>
-            <button class="section__button js-buttonFinishAllTasks"
-            ${ tasks.every( task => task.done) ? "disabled" : ""}>
-            Ukończ wszystkie
-            </button>
-            `;
-        }
+        sectionButtons = `
+              <button class="section__button js-buttonHideDoneTasks">
+                ${hideDoneTask ? "Pokaż ukończone" : "Ukryj ukończone"}
+              </button>
+              <button class="section__button js-buttonFinishAllTasks"
+                ${tasks.every(task => task.done) ? "disabled" : ""}>
+                  Ukończ wszystkie
+              </button>
+            `};
         document.querySelector(".js-sectionButton").innerHTML = sectionButtons;
     };
 
@@ -121,10 +125,10 @@
         renderTasks();
         renderButtons();
 
-        bindToggleDoneEvents();
-        bindRemoveEvents();
-        bindHideTasksEvents();
-        bindFinishTasksEvents();
+        bindToggleDoneEvent();
+        bindRemoveEvent();
+        bindHideTasksEvent();
+        bindFinishTasksEvent();
     };
 
     const textResetAndFocus = (newTask) => {
@@ -132,7 +136,7 @@
         newTask.focus();
     }
 
-    const sanitizationOfUserText = (text) => text.replace(/</g,'&lt;');
+    const sanitizationOfUserText = (text) => text.replace(/</g, '&lt;');
 
     const onFormSubmit = (event) => {
         event.preventDefault();
