@@ -11,12 +11,15 @@ button {
     cursor: pointer;
 }
 
-.body {
+body {
     max-width: 900px;
     margin: 0 auto;
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
     background-color: #eee;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 10px;
 }
 
 .body__header {

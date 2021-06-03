@@ -110,10 +110,10 @@
         let sectionButtons = "";
         if (tasks.length > 0) {
         sectionButtons = `
-              <button class="section__button js-buttonHideDoneTasks">
+              <button class="buttons__button js-buttonHideDoneTasks">
                 ${hideDoneTask ? "Pokaż ukończone" : "Ukryj ukończone"}
               </button>
-              <button class="section__button js-buttonFinishAllTasks"
+              <button class="buttons__button js-buttonFinishAllTasks"
                 ${tasks.every(task => task.done) ? "disabled" : ""}>
                   Ukończ wszystkie
               </button>
