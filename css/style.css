@@ -22,6 +22,12 @@ body {
     grid-gap: 10px;
 }
 
-.body__header {
+.header {
     margin: 20px auto;
+}
+
+.main{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-gap: 10px;
 }
